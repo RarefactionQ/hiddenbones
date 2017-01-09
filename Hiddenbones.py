@@ -69,7 +69,7 @@ def analyze():
     pp = pprint.PrettyPrinter()
     pp.pprint(record)
     print str(wins)+" "+str(losses)+" "+str(ties)
-    # best_responses(record)
+    best_responses(record)
 
 def best_responses(record):
     winners = []
@@ -136,13 +136,13 @@ def winner(pool,hand1,hand2):
         return True
     if straight(pool,hand1) < straight(pool,hand2):
         return False
-    if straight(pool,hand1) == straight(pool,hand2) != -1:
+    if (straight(pool,hand1) == straight(pool,hand2)) and (straight(pool,hand1) != -1):
         return None
     if six_high(pool,hand1) > six_high(pool,hand2):
         return True
     if six_high(pool,hand1) < six_high(pool,hand2):
         return False
-    if six_high(pool,hand1) == six_high(pool,hand2) != -1:
+    if six_high(pool,hand1) == six_high(pool,hand2) and six_high(pool,hand1) != -1:
         return None
     if four_kind(pool,hand1) > four_kind(pool,hand2):
         return True
@@ -178,5 +178,5 @@ def four_kind(pool,hand):
             return i
     return -1
 
-analyze()
-# matchup([5,5],[3,4])
+# analyze()
+matchup([4,5],[3,4])
